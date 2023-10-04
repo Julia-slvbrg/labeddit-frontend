@@ -3,34 +3,47 @@ import styled from "styled-components";
 export const LoginWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
+    padding-top: 2em;
+`
+
+export const LogoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    //margin-bottom: -35px;
+
+
 `
 
 export const LogoImg = styled.img`
-    scale: 1;
-    margin-top: 40px;
+    //scale: .9;
+    height: 11em;
+    //margin-bottom: -18px;
+    margin-bottom: -1.2em;
 `
-export const Header = styled.h3`
-    text-align: center;
+export const LogoHeader = styled.h3`
+    text-align: left;
     font-weight: 300;
     font-size: 16px;
-    line-height: 5px;
+    line-height: 16px;
     font-family: 'IBM Plex Sans', sans-serif;
     color: #000000;
 `
 
 export const FormArticle = styled.article`
-    margin: 80px;
+    //margin: 80px;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
+    //margin-bottom: -1px;
 `
 
 export const EmailSection = styled.section`
-    width: 350px;
-    height: 45px;
-    margin-bottom: 15px;
+    width: 22em;
+    height: 2.8em;
+    margin-bottom: .8em;
 
 `
     
@@ -42,9 +55,9 @@ export const Input = styled.input`
 `
 
 export const PasswordSection = styled.section`
-    width: 353px;
-    height: 45px;
-    margin-bottom: 50px;
+    width: 22.2em;
+    height: 2.8em;
+    margin-bottom: 4em;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -69,9 +82,9 @@ export const VisibilityBtn = styled.div`
 `
 
 export const LoginBtn = styled.button`
-    height: 50px;
-    width: 353px;
-    border-radius: 33px;
+    height: 3.2em;
+    width: 22em;
+    border-radius: 2em;
     background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
     border: none;
     color: #FFFFFF;
@@ -79,7 +92,7 @@ export const LoginBtn = styled.button`
     font-weight: 700;
     line-height: 18px;
     font-family: 'IBM Plex Sans', sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: .5em;
 
     &:active{
         transform: scale(1.1);
@@ -90,14 +103,14 @@ export const LoginBtn = styled.button`
 export const Divisor = styled.div`
     background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
     height: 1px;
-    width: 353px;
-    margin-bottom: 10px;
+    width: 22.2em;
+    margin-bottom: .5em;
 `
 
 export const SignupBtn = styled.button`
-    height: 50px;
-    width: 353px;
-    border-radius: 33px;
+    height: 3.2em;
+    width: 22em;
+    border-radius: 2em;
     background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
     border: none;
     color: #FFFFFF;
@@ -111,3 +124,22 @@ export const SignupBtn = styled.button`
         transition: all ease .5s;
     }
 `
+
+export const ErrorMessage = styled.div`
+    
+    margin: -3.3em 0 .5em 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & p{
+        color: red;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 13px;
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+`
+   
+
