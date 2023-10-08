@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import labedditLogo from "../../assets/logo-labeddit.svg"
-import { Divisor, EmailSection, FormArticle, LoginWrapper, LogoImg, Input, PasswordInput, PasswordSection, VisibilityBtn, LoginBtn, SignupBtn, LogoContainer, LogoHeader, ErrorMessage } from "./LoginPageStyle";
-import useForms from "../../hooks/useForms";
+import { Divisor, EmailSection, FormArticle, LoginWrapper, LogoImg, Input, PasswordSection, VisibilityBtn, LoginBtn, SignupBtn, LogoContainer, LogoHeader, ErrorMessage } from "./LoginPageStyle";
+import useForm from "../../hooks/useForm";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { goToFeedPage, goToSignupPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ export const LoginPage = () => {
     const [errorMessage, setErrorMessage] = useState(false)
     
 
-    const { form, onChangeInput} = useForms({
+    const [form, onChangeInput] = useForm({
         email: '',
         password: ''
     });
@@ -41,12 +41,9 @@ export const LoginPage = () => {
         } catch (error) {   
             console.log(error.response.data)
             setErrorMessage(true)
-            
-            
         }
-    }
+    };
 
-    
     return(
         <LoginWrapper>
             <LogoContainer>
@@ -61,6 +58,7 @@ export const LoginPage = () => {
                             id="email"
                             name="email"
                             placeholder="E-mail"
+                            style={{padding: '0 0 0 1em'}}
                             value={form.email}
                             type="email"
                             onChange={onChangeInput}
@@ -70,10 +68,11 @@ export const LoginPage = () => {
                     </EmailSection>
                     
                     <PasswordSection>
-                        <PasswordInput
+                        <Input
                             id="password"
                             name="password"
                             placeholder="Senha"
+                            style={{padding: '0 0 0 1em'}}
                             value={form.password}
                             type={showPassword? 'text' : 'password'}
                             onChange={onChangeInput}
