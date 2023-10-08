@@ -64,7 +64,6 @@ export const PolicySection = styled.section`
     align-items: start;
     justify-content: start;
     padding: ${(props) => {
-        console.log(props.$checkError == 'true')
         if(props.$checkError){
             return '1.8em 1.6em 0 0'
             

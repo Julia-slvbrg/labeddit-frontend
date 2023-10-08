@@ -31,6 +31,7 @@ export const SignupPage = () => {
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.password));
         setShowErrorMessage(isPasswordValid && isNameValid);
+        
         try {
             
             const { token } = isNameValid && isEmailValid && isPasswordValid && await signup({
@@ -142,7 +143,6 @@ export const SignupPage = () => {
                     }
 
                     <PolicySection $checkError={`${showErrorMessage}`}>
-                        {console.log(`${showErrorMessage}`)}
                         <p>Ao continuar, você concorda com o nosso <a href='#'>Contrato de usuário</a> e nossa <a href="#">Política de Privacidade</a></p>
 
                         <span>

@@ -17,6 +17,33 @@ export default function GlobalState({children}){
         return data
     };
 
+    const getPosts = async () => {
+        const { data } = await axios.get(
+            `${BASE_URL}posts`,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const createPost = async (body) => {
+
+        console.log(body)
+        const { data } = await axios.post(
+            `${BASE_URL}posts`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    }
+
     const validateEmail = (email => email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/));
     const validatePassword = (password => password.match(/^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,10}$/g));
     const validateName = (name, length = 2) => new RegExp(`.{${length},}`).test(name);
@@ -24,6 +51,8 @@ export default function GlobalState({children}){
     const data = {
         login,
         signup,
+        getPosts,
+        createPost,
         validateEmail, 
         validatePassword,
         validateName

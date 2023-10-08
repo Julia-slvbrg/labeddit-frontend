@@ -3,7 +3,6 @@ import headerLogo from "../../assets/logo-header.svg"
 import { Btn, HeaderWrapper, SecondaryContainer } from "./HeaderStyle"
 import { goToLoginPage } from "../../routes/coordinator";
 
-
 export const Header = () => {
     const navigate = useNavigate();
 
