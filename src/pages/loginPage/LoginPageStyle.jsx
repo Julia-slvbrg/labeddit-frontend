@@ -7,20 +7,13 @@ export const LoginWrapper = styled.div`
     align-items: center;
     padding-top: 2em;
 `
-
 export const LogoContainer = styled.div`
     display: flex;
     flex-direction: column;
-    //margin-bottom: -35px;
-
-
 `
-
 export const LogoImg = styled.img`
-    //scale: .9;
     height: 11em;
-    //margin-bottom: -18px;
-    margin-bottom: -1.2em;
+    margin-bottom: -.3em;
 `
 export const LogoHeader = styled.h3`
     text-align: left;
@@ -30,32 +23,25 @@ export const LogoHeader = styled.h3`
     font-family: 'IBM Plex Sans', sans-serif;
     color: #000000;
 `
-
 export const FormArticle = styled.article`
-    //margin: 80px;
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    //margin-bottom: -1px;
 `
-
 export const EmailSection = styled.section`
     width: 22em;
     height: 2.8em;
     margin-bottom: .8em;
-
 `
-    
 export const Input = styled.input`
-   width: 99%;
-   height: 99%;
+    width: 99%;
+    height: 99%;
     border: solid .5px rgb(223, 221, 221);
     border-radius: 5px;
 `
-
 export const PasswordSection = styled.section`
-    width: 22.2em;
+    width: 22.7em;
     height: 2.8em;
     margin-bottom: 4em;
     display: flex;
@@ -63,14 +49,12 @@ export const PasswordSection = styled.section`
     align-items: center;
     justify-content: space-around;
 `
-
-export const PasswordInput = styled.input`
+/* export const PasswordInput = styled.input`
     width: 99%;
     height: 99%;  
     border: solid .5px rgb(223, 221, 221);
     border-radius: 5px; 
-`
-
+` */
 export const VisibilityBtn = styled.div`
     position: absolute;
     right: 50px;
@@ -80,7 +64,6 @@ export const VisibilityBtn = styled.div`
         color: #cdcaca;
     }
 `
-
 export const LoginBtn = styled.button`
     height: 3.2em;
     width: 22em;
@@ -99,14 +82,12 @@ export const LoginBtn = styled.button`
         transition: all ease .5s;
     }
 `
-
 export const Divisor = styled.div`
     background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
     height: 1px;
     width: 22.2em;
     margin-bottom: .5em;
 `
-
 export const SignupBtn = styled.button`
     height: 3.2em;
     width: 22em;
@@ -124,11 +105,8 @@ export const SignupBtn = styled.button`
         transition: all ease .5s;
     }
 `
-
 export const ErrorMessage = styled.div`
-    
     margin: -3.3em 0 .5em 0;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -141,5 +119,3 @@ export const ErrorMessage = styled.div`
         font-family: 'IBM Plex Sans', sans-serif;
     }
 `
-   
-

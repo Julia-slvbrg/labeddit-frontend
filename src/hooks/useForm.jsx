@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useForms(initialState) {
+export default function useForm(initialState) {
     const [form, setForm] = useState(initialState)
 
     const onChangeInput = (e) => {
@@ -8,11 +8,11 @@ export default function useForms(initialState) {
         setForm({...form, [name]: value})
     };
 
-    const cleanInputs = () => {
+    const clearInputs = () => {
         setForm(initialState)
     };
 
-    return { form, onChangeInput, cleanInputs }
+    return  [form, onChangeInput, clearInputs] 
 }
 
 //45 - autenticacao-em-react-template
