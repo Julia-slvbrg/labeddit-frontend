@@ -51,6 +51,16 @@ The app is already integrated with the backend API (documentation: https://docum
 [Link (deploy)](https://labeddit-julsbg.surge.sh/)
 
 
+https://github.com/Julia-slvbrg/labeddit-frontend/assets/114543081/ad49947f-5687-42c9-b309-d9cbab960902
+
+
+
+https://github.com/Julia-slvbrg/labeddit-frontend/assets/114543081/7ad5f65f-c1f1-437d-8988-833c6cee7cc5
+
+
+
+
+
 ## How to run the application
 ```bash
 # Clone this repository
