@@ -31,18 +31,21 @@ export const SignupPage = () => {
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.password));
         setShowErrorMessage(isPasswordValid && isNameValid);
+
+        console.log(validatePassword(form.password))
         
         try {
             
-            const { token } = isNameValid && isEmailValid && isPasswordValid && await signup({
-                name: form.name,
-                email: form.email,
-                password: form.password
-            });
+            if(isPasswordValid !== null){
+                const { token } = isNameValid && isEmailValid && await signup({
+                    name: form.name,
+                    email: form.email,
+                    password: form.password
+                });
 
-            localStorage.setItem('token', token);
-            goToFeedPage(navigate)
-
+                localStorage.setItem('token', token);
+                goToFeedPage(navigate)
+            }
         } catch (error) {
             //console.log(error.response.data)
             if(error.response.data == "email is already being used.") return setEmailUnavailable(true) 
