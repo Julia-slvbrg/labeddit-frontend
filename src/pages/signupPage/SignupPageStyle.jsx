@@ -20,7 +20,7 @@ export const FormArticle = styled.article`
 export const Section = styled.section`
     width: 53em;
     height: 6em;
-    margin-bottom: 1.1em;
+    margin-bottom: 1.10em;
     display: flex;
     flex-direction: row;
     align-items: center;
