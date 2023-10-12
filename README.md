@@ -5,7 +5,7 @@
 
 This application is a the mobile frontend part of a social network called Labeddit. It allows the user to login, signup, create a post, like or dislike any post in the site, comment on a post and like or dislike any comment. 
 
-The app is already integrated with the backend API (documentation: https://documenter.getpostman.com/view/26594436/2s9YCBvVjy).
+The app is already integrated with the backend API (documentation: https://documenter.getpostman.com/view/26594436/2s9YCBvVjy), the repository for the backend can be accessed through the [link](https://github.com/Julia-slvbrg/labeddit-backend).
 
 ## Index
 - <a href="#functionalities">Application functionalities</a>
