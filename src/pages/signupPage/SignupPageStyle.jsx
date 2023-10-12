@@ -49,7 +49,7 @@ align-items: center;
 export const VisibilityBtn = styled.div`
     position: absolute;
     right: 7.8em;
-    top: 64em; 
+    top: 65.4em; 
 
     .fa-eye-slash,
     .fa-eye{
