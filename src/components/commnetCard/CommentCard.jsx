@@ -1,21 +1,17 @@
 import { Wrapper, Content, Creator, LikesDislikes, ActionSection, Img } from "./CommentCardStyle";
 import likeArrow from "../../assets/likeArrow.svg";
 import dislikeArrow from "../../assets/dislikeArrow.svg";
-import commentBallon from "../../assets/commentBallon.svg"
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { goToCommentPage } from "../../routes/coordinator";
-import { useNavigate } from "react-router-dom";
 
-export const CommentCard = ({comment, reloadComments, setReloadComments, idPost}) => {
-    const navigate = useNavigate();
+export const CommentCard = ({comment, reloadComments, setReloadComments, idPost, invalidComment, setInvalidComment}) => {
     const context = useContext(GlobalContext);
 
-    const { likedislikePost } = context;
+    const { likeDislikeComment } = context;
     
     const [scaleLike, setScaleLike] = useState(false);
     const [scaleDislike, setScaleDislike] = useState(false);
-/* 
+ 
     const likePost = () => {
         if(!scaleLike && !scaleDislike){ 
             setScaleLike(true); 
@@ -24,8 +20,9 @@ export const CommentCard = ({comment, reloadComments, setReloadComments, idPost}
                 like: true
             };
 
-            likedislikePost(post.id, body)
-            setReloadComments(!reloadComments)
+            likeDislikeComment(idPost, comment.id, body);
+            setReloadComments(!reloadComments);
+            invalidComment? setInvalidComment(false) : null;
 
         }else if(!scaleLike && scaleDislike){  
             setScaleLike(true); 
@@ -35,8 +32,9 @@ export const CommentCard = ({comment, reloadComments, setReloadComments, idPost}
                 like: true
             };
 
-            likedislikePost(comment.id, body)
-            setReloadComments(!reloadComments)
+            likeDislikeComment(idPost, comment.id, body);
+            setReloadComments(!reloadComments);
+            invalidComment? setInvalidComment(false) : null;
 
         }else if(scaleLike && !scaleDislike){ 
             setScaleLike(false);  
@@ -45,8 +43,9 @@ export const CommentCard = ({comment, reloadComments, setReloadComments, idPost}
                 like: true
             };
 
-            likedislikePost(comment.id, body)
-            setReloadComments(!reloadComments)
+            likeDislikeComment(idPost, comment.id, body);
+            setReloadComments(!reloadComments);
+            invalidComment? setInvalidComment(false) : null;
         }
     };
 
@@ -58,19 +57,22 @@ export const CommentCard = ({comment, reloadComments, setReloadComments, idPost}
                 like: false
             };
 
-            likedislikePost(comment.id, body)
-            setReloadComments(!reloadComments)
+            likeDislikeComment(idPost, comment.id, body); 
+            setReloadComments(!reloadComments);
+            invalidComment? setInvalidComment(false) : null;
 
         }else if(scaleLike && !scaleDislike){
             setScaleLike(false);
             setScaleDislike(true);
-
+ 
             const body = {
                 like: false
             };
 
-            likedislikePost(comment.id, body)
-            setReloadComments(!reloadComments)
+            likeDislikeComment(idPost, comment.id, body);
+            setReloadComments(!reloadComments);
+            invalidComment? setInvalidComment(false) : null;
+
 
         }else if(!scaleLike && scaleDislike){
             setScaleDislike(false);
@@ -79,10 +81,11 @@ export const CommentCard = ({comment, reloadComments, setReloadComments, idPost}
                 like: false
             };
 
-            likedislikePost(comment.id, body)
-            setReloadComments(!reloadComments)
+            likeDislikeComment(idPost, comment.id, body);
+            setReloadComments(!reloadComments);
+            invalidComment? setInvalidComment(false) : null;
         }
-    }; */
+    }; 
 
 
     return(

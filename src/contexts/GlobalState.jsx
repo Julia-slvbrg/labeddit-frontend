@@ -1,22 +1,16 @@
 import axios from "axios";
 import {GlobalContext} from "./GlobalContext"
 import { BASE_URL } from "../constants/BASE_URL.JSX";
-import { useState } from "react";
 
 export default function GlobalState({children}){
 
-    
-    
     const login = async (body) => {
         const { data } = await axios.post(`${BASE_URL}users/login`, body);
-        console.log('login')
         return data
     };
 
     const signup = async (body) => {
         const { data } = await axios.post(`${BASE_URL}users/signup`, body);
-        console.log('signup');
-        
         return data
     };
 
@@ -93,8 +87,21 @@ export default function GlobalState({children}){
             }
         );
         return data
-    }
+    };
 
+    const likeDislikeComment = async (idPost, idComment, body) => {
+        
+        const { data } = await axios.put(
+            `${BASE_URL}posts/${idPost}/comments/${idComment}/like`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
 
     const validateEmail = (email => email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/));
     const validatePassword = (password => password.match(/^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,10}$/g));
@@ -109,6 +116,7 @@ export default function GlobalState({children}){
         getPostById,
         getCommentsByPostId,
         createComment,
+        likeDislikeComment,
         validateEmail, 
         validatePassword,
         validateName

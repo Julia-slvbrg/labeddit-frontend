@@ -39,7 +39,7 @@ export const Divisor = styled.div`
     background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%);
     height: .2em;
     width: 49.8em;
-    margin: 2em 0 ;
+    margin: 2em 0;
 `
 export const PostsArticle = styled.div`
     width: 100%;

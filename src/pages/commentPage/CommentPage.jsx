@@ -4,7 +4,7 @@ import PostFeedCard from "../../components/postCard/PostFeedCard"
 import { useParams } from "react-router-dom"
 import { GlobalContext } from "../../contexts/GlobalContext"
 import CommentCard from "../../components/commnetCard/CommentCard"
-import { Divisor, FormArticle, Input, CommentBtn, Wrapper, CardsArticle } from "./CommentPageStyle"
+import { Divisor, FormArticle, Input, CommentBtn, Wrapper, CardsArticle, ErrorMessage, NoCommentMessage, NoMessageContainer } from "./CommentPageStyle"
 import useForm from "../../hooks/useForm"
 
 export const CommentPage = () => {
@@ -18,6 +18,7 @@ export const CommentPage = () => {
     const [post, setPost] = useState([]);
     const [commentList, setCommentList] = useState([]);
     const [reloadRender, setReloadRender] = useState(false);
+    const [invalidComment, setInvalidComment] = useState(false);
 
     const [form, onChangeInput, clearInputs] = useForm({
         comment: ''
@@ -27,26 +28,27 @@ export const CommentPage = () => {
         
         getPostById(idPost)
         .then((data) => {
-            console.log(data[0]);
             setPost(data[0])
             setPostIdParams(idPost)
         })
         .catch((error) => {
-            console.log(error)
+            //console.log(error)
         });
 
         getCommentsByPostId(idPost)
         .then((data) => {
-            console.log({data})
             setCommentList(data)
         })
         .catch((error) => {
-            console.log(error)
+            //console.log(error)
         })
+
     },[reloadRender]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        invalidComment? setInvalidComment(false) : null;
 
         try {
             await createComment(idPost, {
@@ -56,7 +58,8 @@ export const CommentPage = () => {
             clearInputs();
             setReloadRender(!reloadRender)
         } catch (error) {
-            console.log(error)
+            //console.log(error)
+            if(error) return setInvalidComment(true)
         }
     }
 
@@ -88,6 +91,15 @@ export const CommentPage = () => {
                             />
                         </section>
 
+                        {invalidComment && 
+                            <ErrorMessage>
+                                <span className="material-symbols-outlined" style={{color: 'red'}}>
+                                priority_high
+                            </span>
+                            <p>Nenhum comentário foi adicionado</p>
+                            </ErrorMessage>
+                        }
+
                         <CommentBtn
                             type="submit"
                         >
@@ -109,11 +121,16 @@ export const CommentPage = () => {
                                     reloadComments={reloadRender}
                                     setReloadComments={setReloadRender}
                                     idPost={postIdParams}
+                                    invalidComment={invalidComment}
+                                    setInvalidComment={setInvalidComment}
                                 />
                             )
                         })
-                        : 
-                        <p>Seja o primeiro a comentar!!</p> /* TEM QUE ESTILIZAR ISSO TAMBÉM */
+                        : <NoMessageContainer>
+                            <span className="fa-solid fa-folder-open" style={{scale: '15'}}></span>
+                            <NoCommentMessage>Seja o primeiro a comentar!!</NoCommentMessage> 
+                        </NoMessageContainer>
+                        
                     }
                 </CardsArticle>
                 

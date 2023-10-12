@@ -39,7 +39,7 @@ export const LoginPage = () => {
             localStorage.setItem('token', token);
             goToFeedPage(navigate)
         } catch (error) {   
-            console.log(error.response.data)
+            //console.log(error.response.data)
             setErrorMessage(true)
         }
     };
@@ -58,11 +58,10 @@ export const LoginPage = () => {
                             id="email"
                             name="email"
                             placeholder="E-mail"
-                            style={{padding: '0 0 0 1em'}}
+                            style={{padding: '0 0 0 1em', fontSize: '1.9em'}}
                             value={form.email}
                             type="email"
                             onChange={onChangeInput}
-                            //pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g" //ou ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
                             required
                         />
                     </EmailSection>
@@ -72,11 +71,10 @@ export const LoginPage = () => {
                             id="password"
                             name="password"
                             placeholder="Senha"
-                            style={{padding: '0 0 0 1em'}}
+                            style={{padding: '0 0 0 1em', fontSize: '1.9em'}}
                             value={form.password}
                             type={showPassword? 'text' : 'password'}
-                            onChange={onChangeInput}
-                            //pattern="/^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,10}$/g"                   
+                            onChange={onChangeInput}  
                             required
                         />
 
@@ -88,14 +86,13 @@ export const LoginPage = () => {
                         </VisibilityBtn>
                     </PasswordSection>
 
-                    {errorMessage? 
+                    {errorMessage &&
                         <ErrorMessage>
                             <span className="material-symbols-outlined" style={{color: 'red'}}>
                                 priority_high
                             </span>
                             <p>E-mail ou senha incorreto(a)</p>
                         </ErrorMessage> 
-                        : null
                     }
 
                     <LoginBtn type="submit">Continuar</LoginBtn>

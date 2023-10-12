@@ -15,11 +15,10 @@ export const FeedPage = () => {
     useEffect(()=>{
         getPosts()
         .then((data) => {
-            console.log(data)
             setPostList(data)
         })
         .catch((error) => {
-            console.log(error);
+            //console.log(error);
         })
     },[reloadPosts]);
 
@@ -38,7 +37,7 @@ export const FeedPage = () => {
             clearInputs();
             setReloadPosts(!reloadPosts)
         } catch (error) {
-            console.log(error.response)
+            //console.log(error.response)
         }
     }
      
