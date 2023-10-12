@@ -4,6 +4,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import PostFeedCard from "../../components/postCard/PostFeedCard";
 import { FormArticle, Divisor, Input, PostBtn, Wrapper, PostsArticle } from "./FeedPageStyle";
 import useForm from "../../hooks/useForm";
+import SimpleBackdrop from "../../components/loadingScreen/SimpleBackdrop";
 
 export const FeedPage = () => {
     const context = useContext(GlobalContext);
@@ -11,11 +12,13 @@ export const FeedPage = () => {
     const { getPosts, createPost } = context;
     const [postList, setPostList] = useState([]);
     const [reloadPosts, setReloadPosts] = useState(false);
+    const [callLoading, setCallLoading] = useState(true);
 
     useEffect(()=>{
         getPosts()
         .then((data) => {
-            setPostList(data)
+            setPostList(data);
+            setCallLoading(false)
         })
         .catch((error) => {
             //console.log(error);
@@ -71,16 +74,19 @@ export const FeedPage = () => {
                 <Divisor></Divisor>
 
                 <PostsArticle>
-                    {postList.map((post, index)=>{
-                        return(
-                            <PostFeedCard
-                                key={index}
-                                post={post}
-                                reloadPosts={reloadPosts}
-                                setReloadPosts={setReloadPosts}
-                            />
-                        )
-                    })}
+                    {callLoading? 
+                        <SimpleBackdrop/> 
+                        : postList.map((post, index)=>{
+                            return(
+                                <PostFeedCard
+                                    key={index}
+                                    post={post}
+                                    reloadPosts={reloadPosts}
+                                    setReloadPosts={setReloadPosts}
+                                />
+                            )
+                        })
+                    }
                 </PostsArticle>
             </Wrapper>
         </>
