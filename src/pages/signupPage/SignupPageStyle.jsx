@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-    padding: .4em 1.2em 0em 2.8em;
+    padding: 3em 1.2em 0em 2.8em;
 `
 export const HeaderText = styled.h1`
     font-weight: 700;
@@ -9,10 +9,9 @@ export const HeaderText = styled.h1`
     line-height: 1.4em;
     font-family: 'IBM Plex Sans', sans-serif;
     color: #373737;
-    margin: .7em 0 4em 0;
+    margin: .7em 0 5em 0;
 `
 export const FormArticle = styled.article`
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,21 +40,21 @@ align-items: center;
 
 & p{
     color: red;
-    font-size: 1.4em;
+    font-size: 1.6em;
     font-weight: 700;
-    line-height: 1.6em;
+    line-height: 1.8em;
     font-family: 'IBM Plex Sans', sans-serif;
 }
 `
 export const VisibilityBtn = styled.div`
     position: absolute;
     right: 7.8em;
-    top: 57em; 
+    top: 64em; 
 
     .fa-eye-slash,
     .fa-eye{
         color: #cdcaca;
-        scale: 1.5;
+        scale: 1.8;
     }
 `
 export const PolicySection = styled.section`
@@ -64,12 +63,11 @@ export const PolicySection = styled.section`
     align-items: start;
     justify-content: start;
     padding: ${(props) => {
-        console.log(props.$checkError == 'true')
         if(props.$checkError){
-            return '1.8em 1.6em 0 0'
+            return '3.8em 1.6em 0 0'
             
         }else{
-            return '2em 1.6em 0 0'
+            return '4em 1.6em 0 0'
         }  
     }};
     font-family: 'Noto Sans', sans-serif;

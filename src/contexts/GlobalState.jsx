@@ -3,17 +3,103 @@ import {GlobalContext} from "./GlobalContext"
 import { BASE_URL } from "../constants/BASE_URL.JSX";
 
 export default function GlobalState({children}){
-    
+
     const login = async (body) => {
         const { data } = await axios.post(`${BASE_URL}users/login`, body);
-        console.log('login')
         return data
     };
 
     const signup = async (body) => {
         const { data } = await axios.post(`${BASE_URL}users/signup`, body);
-        console.log('signup');
+        return data
+    };
+
+    const getPosts = async () => {
+        const { data } = await axios.get(
+            `${BASE_URL}posts`,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const createPost = async (body) => {
+        const { data } = await axios.post(
+            `${BASE_URL}posts`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const likedislikePost = async (idPost, body) => {
+        const { data } = await axios.put(
+            `${BASE_URL}posts/${idPost}/like`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const getPostById = async (idPost) => {
+        const { data } = await axios.get(
+            `${BASE_URL}posts/${idPost}`,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const getCommentsByPostId = async (idPost) => {
+        const { data } = await axios.get(
+            `${BASE_URL}posts/${idPost}/comments`,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const createComment = async (idPost, body) => {
+        const { data } = await axios.post(
+            `${BASE_URL}posts/${idPost}/comment`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const likeDislikeComment = async (idPost, idComment, body) => {
         
+        const { data } = await axios.put(
+            `${BASE_URL}posts/${idPost}/comments/${idComment}/like`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
         return data
     };
 
@@ -24,6 +110,13 @@ export default function GlobalState({children}){
     const data = {
         login,
         signup,
+        getPosts,
+        createPost,
+        likedislikePost,
+        getPostById,
+        getCommentsByPostId,
+        createComment,
+        likeDislikeComment,
         validateEmail, 
         validatePassword,
         validateName

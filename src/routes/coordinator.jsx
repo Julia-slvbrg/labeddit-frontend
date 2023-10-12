@@ -6,4 +6,7 @@ export const goToSignupPage = (navigate) => {
 };
 export const goToFeedPage = (navigate) => {
     navigate('/feed')
+};
+export const goToCommentPage = (navigate, idPost) => {
+    navigate(`/feed/${idPost}/comment`)
 }
