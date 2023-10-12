@@ -6,6 +6,7 @@ import { GlobalContext } from "../../contexts/GlobalContext"
 import CommentCard from "../../components/commnetCard/CommentCard"
 import { Divisor, FormArticle, Input, CommentBtn, Wrapper, CardsArticle, ErrorMessage, NoCommentMessage, NoMessageContainer } from "./CommentPageStyle"
 import useForm from "../../hooks/useForm"
+import SimpleBackdrop from "../../components/loadingScreen/SimpleBackdrop"
 
 export const CommentPage = () => {
     const { idPost } = useParams();
@@ -19,6 +20,7 @@ export const CommentPage = () => {
     const [commentList, setCommentList] = useState([]);
     const [reloadRender, setReloadRender] = useState(false);
     const [invalidComment, setInvalidComment] = useState(false);
+    const [callLoading, setCallLoading] = useState(true);
 
     const [form, onChangeInput, clearInputs] = useForm({
         comment: ''
@@ -37,7 +39,8 @@ export const CommentPage = () => {
 
         getCommentsByPostId(idPost)
         .then((data) => {
-            setCommentList(data)
+            setCommentList(data);
+            setCallLoading(false);
         })
         .catch((error) => {
             //console.log(error)
@@ -112,28 +115,28 @@ export const CommentPage = () => {
                 <Divisor></Divisor>
 
                 <CardsArticle>
-                    {commentList.length > 0? 
-                        commentList.map((comment, index)=>{
-                            return(
-                                <CommentCard 
-                                    key={index}
-                                    comment={comment}
-                                    reloadComments={reloadRender}
-                                    setReloadComments={setReloadRender}
-                                    idPost={postIdParams}
-                                    invalidComment={invalidComment}
-                                    setInvalidComment={setInvalidComment}
-                                />
-                            )
-                        })
-                        : <NoMessageContainer>
-                            <span className="fa-solid fa-folder-open" style={{scale: '15'}}></span>
-                            <NoCommentMessage>Seja o primeiro a comentar!!</NoCommentMessage> 
-                        </NoMessageContainer>
-                        
+                    {callLoading? 
+                        <SimpleBackdrop/> 
+                        : commentList.length > 0? 
+                            commentList.map((comment, index)=>{
+                                return(
+                                    <CommentCard 
+                                        key={index}
+                                        comment={comment}
+                                        reloadComments={reloadRender}
+                                        setReloadComments={setReloadRender}
+                                        idPost={postIdParams}
+                                        invalidComment={invalidComment}
+                                        setInvalidComment={setInvalidComment}
+                                    />
+                                )
+                            })
+                            : <NoMessageContainer>
+                                <span className="fa-solid fa-folder-open" style={{scale: '15'}}></span>
+                                <NoCommentMessage>Seja o primeiro a comentar!!</NoCommentMessage> 
+                            </NoMessageContainer>
                     }
                 </CardsArticle>
-                
             </Wrapper>
         </>
     )
