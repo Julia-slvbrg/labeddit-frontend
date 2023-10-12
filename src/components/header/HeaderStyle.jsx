@@ -9,12 +9,17 @@ export const SecondaryContainer = styled.div`
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     align-items: center;
-
-    & img{
-        height: 4em;
-        grid-column: 2/3;
-        margin-top: .9em;
-    }
+`
+export const CloseIconImg = styled.img`
+    height: 2em;
+    grid-column: 1/2;
+    margin-top: .9em;
+    margin-left: -5em;
+`
+export const LogoImg = styled.img`
+    height: 4em;
+    grid-column: 2/3;
+    margin-top: .9em;
 `
 export const Btn = styled.button`
     color: #4088CB;

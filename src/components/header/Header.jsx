@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import headerLogo from "../../assets/logo-header.svg" 
-import { Btn, HeaderWrapper, SecondaryContainer } from "./HeaderStyle"
-import { goToLoginPage } from "../../routes/coordinator";
+import closeIconImg from "../../assets/closeIcon.svg"
+import { Btn, CloseIconImg, HeaderWrapper, LogoImg, SecondaryContainer } from "./HeaderStyle"
+import { goToFeedPage, goToLoginPage } from "../../routes/coordinator"
 
-export const Header = () => {
+export const Header = ({ closeIcon }) => {
     const navigate = useNavigate();
 
     const logoutFunction = () => {
@@ -29,7 +30,14 @@ export const Header = () => {
     return(
         <HeaderWrapper>
             <SecondaryContainer>
-                <img src={headerLogo} alt="Labeddit logo"/>
+                {closeIcon &&
+                    <CloseIconImg 
+                        src={closeIconImg} 
+                        alt="close" 
+                        onClick={()=>goToFeedPage(navigate)}
+                    /> 
+                }
+                <LogoImg src={headerLogo} alt="Labeddit logo"/>
 
                 {chooseButton()}
             </SecondaryContainer>

@@ -6,6 +6,14 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
 `
+export const CardsArticle = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
 export const FormArticle = styled.article`
     margin-top: 3em ;
 `
@@ -18,7 +26,7 @@ export const Input = styled.input`
     margin-bottom: .8em;
     padding-left: 1em;
 `
-export const PostBtn = styled.button`
+export const CommentBtn = styled.button`
     height: 3em;
     width: 21.8em;
     border-radius: .7em;
@@ -40,12 +48,4 @@ export const Divisor = styled.div`
     height: .2em;
     width: 49.8em;
     margin: 2em 0 ;
-`
-export const PostsArticle = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 `

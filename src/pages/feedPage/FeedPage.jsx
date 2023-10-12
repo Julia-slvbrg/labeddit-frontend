@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import Header from "../../components/header/Header"
 import { GlobalContext } from "../../contexts/GlobalContext";
-import PostCard from "../../components/postCard/PostCard";
+import PostFeedCard from "../../components/postCard/PostFeedCard";
 import { FormArticle, Divisor, Input, PostBtn, Wrapper, PostsArticle } from "./FeedPageStyle";
 import useForm from "../../hooks/useForm";
 
@@ -10,15 +10,15 @@ export const FeedPage = () => {
 
     const { getPosts, createPost } = context;
     const [postList, setPostList] = useState([]);
-    const [reloadPosts, setReloadPosts] = useState(false)
+    const [reloadPosts, setReloadPosts] = useState(false);
 
     useEffect(()=>{
         getPosts()
-        .then((data)=> {
+        .then((data) => {
             console.log(data)
             setPostList(data)
         })
-        .catch((error)=>{
+        .catch((error) => {
             console.log(error);
         })
     },[reloadPosts]);
@@ -27,24 +27,21 @@ export const FeedPage = () => {
         post: ''
     });
 
-
     const onSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            console.log('try')
             await createPost({
                 content: form.post
-            }) 
+            });
 
-            clearInputs()
+            clearInputs();
             setReloadPosts(!reloadPosts)
         } catch (error) {
             console.log(error.response)
         }
     }
      
-
     return(
         <>
             <Header/>
@@ -68,15 +65,20 @@ export const FeedPage = () => {
                         >
                             Postar
                         </PostBtn>
+
                     </form>
                 </FormArticle>
+
                 <Divisor></Divisor>
+
                 <PostsArticle>
                     {postList.map((post, index)=>{
                         return(
-                            <PostCard
+                            <PostFeedCard
                                 key={index}
                                 post={post}
+                                reloadPosts={reloadPosts}
+                                setReloadPosts={setReloadPosts}
                             />
                         )
                     })}

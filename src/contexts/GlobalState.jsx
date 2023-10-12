@@ -1,8 +1,11 @@
 import axios from "axios";
 import {GlobalContext} from "./GlobalContext"
 import { BASE_URL } from "../constants/BASE_URL.JSX";
+import { useState } from "react";
 
 export default function GlobalState({children}){
+
+    
     
     const login = async (body) => {
         const { data } = await axios.post(`${BASE_URL}users/login`, body);
@@ -30,8 +33,6 @@ export default function GlobalState({children}){
     };
 
     const createPost = async (body) => {
-
-        console.log(body)
         const { data } = await axios.post(
             `${BASE_URL}posts`,
             body,
@@ -42,7 +43,58 @@ export default function GlobalState({children}){
             }
         );
         return data
+    };
+
+    const likedislikePost = async (idPost, body) => {
+        const { data } = await axios.put(
+            `${BASE_URL}posts/${idPost}/like`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const getPostById = async (idPost) => {
+        const { data } = await axios.get(
+            `${BASE_URL}posts/${idPost}`,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const getCommentsByPostId = async (idPost) => {
+        const { data } = await axios.get(
+            `${BASE_URL}posts/${idPost}/comments`,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
+    };
+
+    const createComment = async (idPost, body) => {
+        const { data } = await axios.post(
+            `${BASE_URL}posts/${idPost}/comment`,
+            body,
+            {
+                headers: {
+                    Authorization: localStorage.getItem('token')
+                }
+            }
+        );
+        return data
     }
+
 
     const validateEmail = (email => email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/));
     const validatePassword = (password => password.match(/^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,10}$/g));
@@ -53,6 +105,10 @@ export default function GlobalState({children}){
         signup,
         getPosts,
         createPost,
+        likedislikePost,
+        getPostById,
+        getCommentsByPostId,
+        createComment,
         validateEmail, 
         validatePassword,
         validateName
