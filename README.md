@@ -1,8 +1,20 @@
-# React + Vite
+# Labeddit - social network
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- ![NETFLIX](./src/assets/netflix-logo.png) -->
+<img src="./src/assets/logo-labeddit.svg" alt="Labeddit logo" height="230px">
 
-Currently, two official plugins are available:
+This application is a the mobile frontend part of a social network called Labeddit. It allows the user to login, signup, create a post, like or dislike any post in the site, comment on a post and like or dislike any comment. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The app is already integrated with the backend API (documentation: https://documenter.getpostman.com/view/26594436/2s9YCBvVjy).
+
+
+## Index
+- <a href="#functionalities">Application functionalities</a>
+- <a href="#layout">Layout</a>
+- <a href="#demonstration">Demonstration</a>
+- <a href="#run">How to run the application</a>
+- <a href="#endpoints">Application endpoints</a>
+- <a href="#tecnologies-used">Tecnologies used</a>
+- <a href="#developer">Developer</a>
+- <a href="#next-steps">Next steps</a>
+
