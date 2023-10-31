@@ -14,8 +14,3 @@ export default function useForm(initialState) {
 
     return  [form, onChangeInput, clearInputs] 
 }
-
-//45 - autenticacao-em-react-template
-// 77 - deplpoy-template-frontend
-//45.1 - autenticacao-em-react-exercicios
-//49 - revisao-react-frontend
